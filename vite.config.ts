@@ -1,65 +1,43 @@
-import path from "path";
-import { defineConfig } from "vite";
-import vue from "@vitejs/plugin-vue";
-import Components from "unplugin-vue-components/vite";
-import AutoImport from "unplugin-auto-import/vite";
 
-// https://vitejs.dev/config/
-export default defineConfig({
-  server: {
-    host: "localhost",
-    port: 8888,
-    open: true,
-    https: false,
-    proxy: {},
-  },
-  plugins: [
-    vue({
-      // https://vuejs.org/guide/extras/reactivity-transform.html
-      // 开启响应性语法糖 （试验性特性）
-      // Reactivity Transform
-      reactivityTransform: true,
-    }),
+import type { UserConfig, ConfigEnv } from 'vite';
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import { resolve } from "path";
+export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
 
-    // https://github.com/antfu/unplugin-auto-import
-    AutoImport({
-      imports: [
-        "vue",
-        "vue-router",
-        "vue-i18n",
-        "vue/macros",
-        "@vueuse/head",
-        "@vueuse/core",
-      ],
-      dts: "types/auto-imports.d.ts",
-      dirs: [
-        "src/composables",
-        "src/store",
-      ],
-      vueTemplate: true,
-    }),
-
-    // https://github.com/antfu/unplugin-vue-components
-    Components({
-      extensions: ["vue"],
-      include: [/\.vue$/, /\.vue\?vue/],
-      dts: "types/components.d.ts",
-      exclude: [/[\\/]node_modules[\\/]/, /[\\/]\.git[\\/]/, /[\\/]\.nuxt[\\/]/],
-    }),
-  ],
-  resolve: {
-    alias: {
-      "~/": `${path.resolve(__dirname, "src")}/`,
+  // const env = loadEnv(mode, process.cwd(), '')
+  console.log(command, mode);
+  return {
+    plugins: [vue(),
+    ],
+    publicDir: "public",
+    base: "./",
+    server: {
+      host: '0.0.0.0',
+      port: 8112,
+      open: false,
+      strictPort: false,
+      // proxy: {}
     },
-  },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: `
-      @import "~/styles/variables.scss";
-    `,
-        javascriptEnabled: true,
+    resolve: {
+      alias: {
+        "@": resolve(__dirname, "./src"),
+        "components": resolve(__dirname, "./src/components"),
+        "api": resolve(__dirname, "./src/api"),
       },
     },
-  },
-});
+    css: {
+      // css预处理器
+      preprocessorOptions: {
+        scss: {
+          // charset: false,
+          additionalData: `@use "./src/assets/css/variable.scss" as *;`,
+        },
+      },
+    },
+    build: {
+      outDir: 'dist',
+    },
+  }
+
+})

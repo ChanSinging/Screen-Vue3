@@ -1,49 +1,30 @@
-import type { RouteRecordRaw } from "vue-router";
-import { createRouter, createWebHistory } from "vue-router";
-import NProgress from "nprogress";
-
-const routes: RouteRecordRaw[] = [
+import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router'
+import type {RouteRecordRaw} from "vue-router"
+const routes: Array<RouteRecordRaw> = [
   {
-    path: "/",
-    component: () => import("~/views/home/index.vue"),
+    path: '/',
+    redirect: '/index',
   },
   {
-    path: "/404",
-    name: "ErrorPage",
-    component: () => import("~/views/errorPages/index.vue"),
+    path: '/home',
+    name: 'home',
+    component: () => import('@/views/HomeView.vue'),
+    children:[
+      {
+        path: '/index',
+        name: 'index',
+        component: () => import('@/views/index/index.vue'),
+      }
+    ]
   },
-  {
-    path: "/home",
-    name: "Home",
-    component: () => import("~/views/home/index.vue"),
-  },
-  {
-    path: "/hero",
-    name: "Hero",
-    component: () => import("~/views/home/components/Hero.vue"),
-  },
-  {
-    path: "/StoreTest",
-    name: "StoreTest",
-    component: () => import("~/views/home/components/StoreTest.vue"),
-  },
-  {
-    path: "/:pathMatch(.*)*",
-    redirect: "/404",
-  },
-];
-
-const index = createRouter({
-  history: createWebHistory(),
+]
+const router = createRouter({
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes,
-});
-index.beforeEach(() => {
-  if (!NProgress.isStarted())
-    NProgress.start();
-});
+})
 
-index.afterEach(() => {
-  NProgress.done();
-});
+router.beforeEach((to, from, next) => {
+  next();
+})
 
-export default index;
+export default router

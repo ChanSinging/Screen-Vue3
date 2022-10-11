@@ -1,19 +1,16 @@
-import { createApp } from "vue";
-// Vue Router
-import { createPinia } from "pinia";
-import index from "./router";
+import { createApp } from 'vue'
+import { createPinia } from 'pinia'
 
-import { registerStore } from "./store";
-import App from "~/App.vue";
+import App from './App.vue'
+import router from './router'
 
-import "~/styles/tailwind.css";
-import "~/styles/main.scss";
+import '@/assets/css/main.scss'
+//不使用mock 请注释掉
+import { mockXHR } from "@/mock/index";
+mockXHR()
 
-const app = createApp(App);
+const app = createApp(App)
+app.use(createPinia())
+app.use(router)
 
-app.use(createPinia());
-registerStore();
-
-app.use(index);
-
-app.mount("#app");
+app.mount('#app')
