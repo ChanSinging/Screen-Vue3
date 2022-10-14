@@ -6,8 +6,12 @@ currentGET("leftTop").then(res=>{
 </script>
 
 <template>
-  <div class="">
+  <div class="index">
   </div>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.index{
+
+}
+</style>

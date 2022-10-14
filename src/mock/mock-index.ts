@@ -1,4 +1,5 @@
 import Mock from "mockjs";
+//处理路径传参
 import {parameteUrl} from "@/utils/query-param"
 //左上
 export default [
