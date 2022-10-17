@@ -42,19 +42,17 @@
 
 ### 项目预览地址
 
-[https://www.daidaibg.com/bigscreen-vue3
-
-[](https://www.daidaibg.com/bigscreen)
+[https://www.daidaibg.com/bigscreen](https://www.daidaibg.com/bigscreen)
 
 ### 项目仓库地址
 
 **github地址**
 
-[https://github.com/daidaibg/IofTV-Screen-Vue3](https://github.com/daidaibg/IofTV-Screen)
+[https://github.com/daidaibg/IofTV-Screen-Vue3](https://github.com/daidaibg/IofTV-Screen-Vue3)
 
 **Gitee地址**
 
-[https://gitee.com/daidaibg/IofTV-Screen-Vue3](https://gitee.com/daidaibg/IofTV-Screen)
+[https://gitee.com/daidaibg/IofTV-Screen-Vue3](https://gitee.com/daidaibg/IofTV-Screen-Vue3)
 
 ### 采用自适应组件方式，
 
