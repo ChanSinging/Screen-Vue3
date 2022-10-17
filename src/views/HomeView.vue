@@ -11,7 +11,7 @@ const wrapperStyle = {};
     height="1080"
     :delay="500"
     :fullScreen="false"
-    :boxStyle="{ background: '#000' }"
+    :boxStyle="{ background: '#03050C' }"
     :wrapperStyle="wrapperStyle"
   >
     <div class="content_wrap">

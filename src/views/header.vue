@@ -1,13 +1,22 @@
 <script setup lang="ts">
 import { reactive } from "vue";
-
-const dateData = reactive({
-  dateDay: null,
-  dateYear: null,
-  dateWeek: null,
-  weekday: ["周日", "周一", "周二", "周三", "周四", "周五", "周六"],
+import dayjs from 'dayjs';
+import type {DateDataType} from "./index.d"
+const dateData = reactive<DateDataType>({
+  dateDay: "",
+  dateYear: "",
+  dateWeek: "",
+  timing:null
 });
-
+  
+const weekday= ["周日", "周一", "周二", "周三", "周四", "周五", "周六"]
+const timeFn = () => {
+  dateData.timing = setInterval(() => {
+    dateData.dateDay = dayjs().format("YYYY-MM-DD hh : mm : ss");
+    dateData.dateWeek = weekday[dayjs().day()];
+  }, 1000);
+};
+timeFn()
 const showSetting = () => {};
 </script>
 

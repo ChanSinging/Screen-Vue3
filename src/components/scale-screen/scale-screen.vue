@@ -19,7 +19,7 @@ import type { CSSProperties, PropType } from "vue";
  * @returns {() => void}
  */
 function debounce(fn: Function, delay: number): () => void {
-  // let timer: NodeJS.Timeout;
+  // let timer: NodeJS.Timer;
   let timer: any;
   return function (...args: any[]): void {
     if (timer) clearTimeout(timer);
