@@ -177,6 +177,66 @@ export default {
 | :---: | :--: | :----: | :----: | :----: |
 | title | 标头 |   -    | string |   -    |
 
+### CountUp 数字滚动
+
+以下属性同 coutup.js 配置项（same as countup.js properties）
+
+#### Props
+
+| Name     | Type             | Default | Description                                                  |
+| -------- | ---------------- | ------- | ------------------------------------------------------------ |
+| endVal   | Number \| String | -       | 结束值                                                       |
+| startVal | Number \| String | 0       | 起始值                                                       |
+| duration | Number           | 2.5     | 动画时长，单位：秒                                           |
+| options  | Object           | -       | [countUp.js](https://github.com/inorganik/countUp.js) options 配置项 |
+
+以下为组件特有属性（extension properties）
+
+| Name     | Type              | Default | Description                   |
+| -------- | ----------------- | ------- | ----------------------------- |
+| autoplay | Boolean           | true    | 是否自动计数                  |
+| loop     | Boolean \| Number | false   | 循环次数，有限次数 / 无限循环 |
+| delay    | Number            | 0       | loop 循环的间隔时间，单位：秒 |
+
+#### 插槽（slots）
+
+| Name   | Description |
+| ------ | ----------- |
+| prefix | 前缀        |
+| suffix | 后缀        |
+
+#### 事件（Events）
+
+| Name      | Description                | return       |
+| --------- | -------------------------- | ------------ |
+| @init     | CountUp 实例初始化完成触发 | CountUp 实例 |
+| @finished | 计数结束时触发             | -            |
+
+#### countup.js 配置项说明
+```ts
+interface CountUpOptions {
+  startVal?: number // number to start at (0) 开始数值，默认 0
+  decimalPlaces?: number // number of decimal places (0) 小数点 位数
+  duration?: number // animation duration in seconds (2) 动画时长
+  useGrouping?: boolean // example: 1,000 vs 1000 (true) 是否使用千分位
+  useEasing?: boolean // ease animation (true) 是否开启动画过渡，默认动画函数为easeOutExpo 
+  smartEasingThreshold?: number // smooth easing for large numbers above this if useEasing (999)
+  smartEasingAmount?: number // amount to be eased for numbers above threshold (333)
+  separator?: string // grouping separator (',') 千分位分隔符
+  decimal?: string // decimal ('.') 小数点分隔符
+  // easingFn: easing function for animation (easeOutExpo) 动画函数
+  easingFn?: (t: number, b: number, c: number, d: number) => number
+  formattingFn?: (n: number) => string // this function formats result 格式化结果
+  prefix?: string // text prepended to result 数值前缀
+  suffix?: string // text appended to result 数值后缀
+  numerals?: string[] // numeral glyph substitution 数字符号替换 0 - 9，例如替换为 [a,b,c,d,e,f,g,h,i,j]
+  enableScrollSpy?: boolean // start animation when target is in view 在可视范围内才开始动画
+  scrollSpyDelay?: number // delay (ms) after target comes into view  目标进入可视范围内后的延迟时间(毫秒)
+}
+```
+
+
+
 ## 中间地图
 
 ### 南海显隐控制
