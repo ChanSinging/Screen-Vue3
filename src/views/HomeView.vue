@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import {ref} from "vue"
 import { RouterView } from "vue-router";
 import ScaleScreen from "@/components/scale-screen";
 import Headers from "./header.vue";
 const wrapperStyle = {};
+const autoScale = ref(false)
 </script>
 
 <template>
@@ -11,8 +13,9 @@ const wrapperStyle = {};
     height="1080"
     :delay="500"
     :fullScreen="false"
-    :boxStyle="{ background: '#03050C' }"
+    :boxStyle="{ background: '#03050C',overflow:autoScale?'hidden':'auto' }"
     :wrapperStyle="wrapperStyle"
+    :autoScale="autoScale"
   >
     <div class="content_wrap">
       <Headers />
