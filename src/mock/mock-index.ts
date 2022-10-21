@@ -1,7 +1,7 @@
 import Mock from "mockjs";
 //处理路径传参
 import {parameteUrl} from "@/utils/query-param"
-//左上
+//左中
 export default [
     {
         url: "/bigscreen/countUserNum",
@@ -19,5 +19,21 @@ export default [
             return a
         },
     },
-
+    {
+        url: "/bigscreen/countDeviceNum",
+        type: "get",
+        response: () => {
+            const a = Mock.mock({
+                success: true,
+                data: {
+                    alarmNum: '@integer(100, 1000)',
+                    offlineNum: '@integer(0, 50)',
+                    totalNum:698
+                }
+            })
+            a.data.onlineNum=a.data.totalNum-a.data.offlineNum
+            return a
+        }
+    }
 ];
+

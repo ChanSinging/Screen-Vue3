@@ -3,7 +3,7 @@
   "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "types"],
   "compilerOptions": {
     "baseUrl": "./",
-    "types": ["vite/client" ],
+    "types": ["vite/client" ,"element-plus/global"],
     "paths": {
       "@/*": ["src/*"],
       "api/*": [

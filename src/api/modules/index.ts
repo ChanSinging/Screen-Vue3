@@ -1,3 +1,4 @@
 export default {
-    'leftTop':'/bigscreen/countUserNum',//首页博客列表
+    'leftTop':'/bigscreen/countDeviceNum',//左上
+    'leftCenter':'/bigscreen/countUserNum',//左中
 }
