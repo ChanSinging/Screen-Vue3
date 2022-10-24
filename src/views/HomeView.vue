@@ -3,8 +3,14 @@ import { ref } from "vue";
 import { RouterView } from "vue-router";
 import ScaleScreen from "@/components/scale-screen";
 import Headers from "./header.vue";
+import Setting from "./setting.vue"
+import { useSettingStore } from "@/stores/index";
+import { storeToRefs } from 'pinia';
+
+const settingStore = useSettingStore();
+const {isScale} =storeToRefs(settingStore)
 const wrapperStyle = {};
-const autoScale = ref(false);
+
 </script>
 
 <template>
@@ -15,16 +21,17 @@ const autoScale = ref(false);
     :fullScreen="false"
     :boxStyle="{
       background: '#03050C',
-      overflow: autoScale ? 'hidden' : 'auto',
+      overflow: isScale ? 'hidden' : 'auto',
     }"
     :wrapperStyle="wrapperStyle"
-    :autoScale="autoScale"
+    :autoScale="isScale"
   >
     <div class="content_wrap">
       <Headers />
       <RouterView />
     </div>
   </scale-screen>
+  <Setting/>
 </template>
 <style lang="scss" scoped>
 .content_wrap {

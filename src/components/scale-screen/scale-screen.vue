@@ -1,5 +1,9 @@
 <template>
-  <section :style="{ ...styles.box, ...boxStyle }" class="v-screen-box">
+  <section
+    :style="{ ...styles.box, ...boxStyle }"
+    class="v-screen-box"
+    ref="box"
+  >
     <div
       :style="{ ...styles.wrapper, ...wrapperStyle }"
       class="screen-wrapper"
@@ -10,7 +14,7 @@
   </section>
 </template>
 <script lang="ts" setup>
-import { nextTick, onMounted, onUnmounted, reactive, ref } from "vue";
+import { nextTick, onMounted, onUnmounted, reactive, ref, watch } from "vue";
 import type { CSSProperties, PropType } from "vue";
 /**
  * 防抖函数
@@ -105,11 +109,27 @@ const styles: Record<string, CSSProperties> = {
 };
 
 const screenWrapper = ref<HTMLElement>();
+const box = ref<HTMLElement>();
+
+watch(
+  () => props.autoScale,
+  async (newVal: any) => {
+    if (newVal) {
+      onResize();
+      addListener();
+    } else {
+      clearListener();
+      clearScreenWrapperStyle();
+    }
+  }
+);
 /**
  * 初始化大屏容器宽高
  */
 const initSize = () => {
   return new Promise<void>((resolve) => {
+    box.value!.scrollLeft = 0;
+    box.value!.scrollTop = 0;
     nextTick(() => {
       // region 获取大屏真实尺寸
       if (props.width && props.height) {
@@ -144,9 +164,14 @@ const updateSize = () => {
     screenWrapper.value!.style.height = `${state.originalHeight}px`;
   }
 };
-
+const clearScreenWrapperStyle = () => {
+  screenWrapper.value!.style.transform = "";
+  screenWrapper.value!.style.margin = "";
+};
 const autoScale = (scale: number) => {
-  if (!props.autoScale) return;
+  if (!props.autoScale) {
+    return;
+  }
   const domWidth = screenWrapper.value!.clientWidth;
   const domHeight = screenWrapper.value!.clientHeight;
   const currentWidth = document.body.clientWidth;
@@ -195,17 +220,27 @@ const initMutationObserver = () => {
     attributeOldValue: true,
   });
 };
+
+const clearListener = () => {
+  window.removeEventListener("resize", onResize);
+  // state.observer?.disconnect();
+};
+
+const addListener = () => {
+  window.addEventListener("resize", onResize);
+  // initMutationObserver();
+};
 onMounted(() => {
   nextTick(async () => {
     await initSize();
     updateSize();
     updateScale();
-    window.addEventListener("resize", onResize);
-    initMutationObserver();
+    addListener();
+    // initMutationObserver();
   });
 });
 onUnmounted(() => {
-  window.removeEventListener("resize", onResize);
-  state.observer?.disconnect();
+  clearListener();
+  // state.observer?.disconnect();
 });
 </script>

@@ -2,13 +2,16 @@
 import { reactive } from "vue";
 import dayjs from 'dayjs';
 import type {DateDataType} from "./index.d"
+import {useSettingStore} from "@/stores/index"
+
 const dateData = reactive<DateDataType>({
   dateDay: "",
   dateYear: "",
   dateWeek: "",
   timing:null
 });
-  
+
+const { setSettingShow} =useSettingStore()
 const weekday= ["周日", "周一", "周二", "周三", "周四", "周五", "周六"]
 const timeFn = () => {
   dateData.timing = setInterval(() => {
@@ -17,7 +20,6 @@ const timeFn = () => {
   }, 1000);
 };
 timeFn()
-const showSetting = () => {};
 </script>
 
 <template>
@@ -32,11 +34,10 @@ const showSetting = () => {};
     </div>
     <div class="timers">
       {{ dateData.dateYear }} {{ dateData.dateWeek }} {{ dateData.dateDay }}
-      <i
-        class="blq-icon-shezhi02"
-        style="margin-left: 10px"
-        @click="showSetting"
-      ></i>
+
+      <div class="setting_icon"   @click="setSettingShow(true)">
+          <img src="@/assets/img/headers/setting.png" alt="设置">
+      </div>
     </div>
   </div>
 </template>
@@ -85,8 +86,15 @@ const showSetting = () => {};
     display: flex;
     align-items: center;
 
-    .blq-icon-shezhi02 {
+    .setting_icon {
+      width: 20px;
+      height: 20px;
       cursor: pointer;
+      margin-left: 12px;
+      img{
+        width: 100%;
+        height: 100%;
+      }
     }
   }
 }
