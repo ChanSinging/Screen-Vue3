@@ -6,7 +6,7 @@ import { optionHandle, regionCodes } from "./center.map";
 import type { MapdataType } from "./center.map";
 const option = ref({});
 const code = ref("china"); //china 代表中国 其他地市是行政编码
-const centerMapRef = ref();
+
 withDefaults(
   defineProps<{
     // 结束数值
@@ -36,7 +36,6 @@ const dataSetHandle = async (regionCode: string, list: object[]) => {
     }
   });
   await nextTick();
-  centerMapRef.value?.resize();
 
   option.value = optionHandle(regionCode, list, mapData);
 };
@@ -56,7 +55,7 @@ const getGeojson = (regionCode: string) => {
       mapjson = mapjson.geoJSON;
       resolve(mapjson);
     } else {
-      mapjson = await GETNOBASE(`/map-geojson/${regionCode}.json`).then(
+      mapjson = await GETNOBASE(`map-geojson/${regionCode}.json`).then(
         (data) => data
       );
       code.value=regionCode
@@ -98,6 +97,7 @@ const mapClick = (params: any) => {
         :option="option"
         ref="centerMapRef"
         @click="mapClick"
+        v-if="JSON.stringify(option)!='{}'"
       />
     </div>
   </div>
@@ -147,7 +147,7 @@ const mapClick = (params: any) => {
   }
 
   .mapwrap {
-    height: 548px;
+    height: 580px;
     width: 100%;
     // padding: 0 0 10px 0;
     box-sizing: border-box;

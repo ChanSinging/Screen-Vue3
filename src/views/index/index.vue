@@ -3,6 +3,12 @@ import ItemWrap from "@/components/item-wrap";
 import LeftTop from "./left-top.vue";
 import LeftCenter from "./left-center.vue";
 import CenterMap from "./center-map.vue";
+import CenterBottom from "./center-bottom.vue";
+import RightTop from "./right-top.vue";
+import RightCenter from "./right-center.vue";
+import RightBottom from "./right-bottom.vue";
+
+
 
 
 </script>
@@ -32,11 +38,11 @@ import CenterMap from "./center-map.vue";
     <div class="contetn_center">
       <CenterMap class="contetn_center_top" title="设备分布图"/>
       <ItemWrap class="contetn_center-bottom" title="安装计划">
-        <!-- <CenterBottom /> -->
+        <CenterBottom />
       </ItemWrap>
     </div>
     <div class="contetn_right">
-      <!-- <ItemWrap class="contetn_left-bottom contetn_lr-item" title="报警次数">
+      <ItemWrap class="contetn_left-bottom contetn_lr-item" title="报警次数">
         <RightTop />
       </ItemWrap>
       <ItemWrap
@@ -48,7 +54,7 @@ import CenterMap from "./center-map.vue";
       </ItemWrap>
       <ItemWrap class="contetn_left-bottom contetn_lr-item" title="数据统计图 ">
         <RightBottom />
-      </ItemWrap> -->
+      </ItemWrap>
     </div>
   </div>
 </template>

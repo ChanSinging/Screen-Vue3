@@ -10,7 +10,18 @@ function ArrSet(Arr: any[], id: string): any[] {
     }, [])
     return arrays
 }
-
+/**
+* @description: min ≤ r ≤ max  随机数
+* @param {*} Min
+* @param {*} Max
+* @return {*}
+*/
+function RandomNumBoth(Min: any, Max: any) {
+    var Range = Max - Min;
+    var Rand = Math.random();
+    var num = Min + Math.round(Rand * Range); //四舍五入
+    return num;
+}
 //左中
 export default [
     {
@@ -44,6 +55,32 @@ export default [
             })
             a.data.onlineNum = a.data.totalNum - a.data.offlineNum
             return a
+        }
+    },
+    //安装计划
+    {
+        url: "/bigscreen/installationPlan",
+        type: "get",
+        response: () => {
+
+            let num = RandomNumBoth(26, 32);
+            const a = Mock.mock({
+                ["category|" + num]: ["@city()"],
+                ["barData|" + num]: ["@integer(10, 100)"],
+            })
+            let lineData = [], rateData = [];
+            for (let index = 0; index < num; index++) {
+                let lineNum = Mock.mock('@integer(0, 100)') + a.barData[index]
+                lineData.push(lineNum)
+                let rate = a.barData[index] / lineNum;
+                rateData.push((rate * 100).toFixed(0))
+            }
+            a.lineData = lineData
+            a.rateData = rateData
+            return {
+                success: true,
+                data: a
+            }
         }
     },
     {
@@ -80,7 +117,7 @@ export default [
                     }
                 })
                 // 去重
-                a.data.dataList = ArrSet(a.data.dataList,"name")
+                a.data.dataList = ArrSet(a.data.dataList, "name")
                 return a
             }
         }
