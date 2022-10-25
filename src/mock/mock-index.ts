@@ -10,12 +10,13 @@ export default [
             const a = Mock.mock({
                 success: true,
                 data: {
-                    offlineNum: '@integer(1, 100)',
-                    lockNum: '@integer(1, 10)',
-                    totalNum: 218
+                    offlineNum: '@integer(50, 100)',
+                    alarmNum: '@integer(20, 100)',
+                    lockNum: '@integer(10, 50)',
+                    totalNum: 368
                 }
             })
-            a.data.onlineNum = a.data.totalNum - a.data.offlineNum - a.data.lockNum
+            a.data.onlineNum = a.data.totalNum - a.data.offlineNum - a.data.lockNum-a.data.alarmNum
             return a
         },
     },
