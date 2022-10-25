@@ -8,11 +8,14 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     CountUp: typeof import('./src/components/count-up/count-up.vue')['default']
+    DialogContent: typeof import('./src/components/Plugins/DialogContent/index.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElDrawer: typeof import('element-plus/es')['ElDrawer']
     ElRadio: typeof import('element-plus/es')['ElRadio']
     ElRadioGroup: typeof import('element-plus/es')['ElRadioGroup']
     ItemWrap: typeof import('./src/components/item-wrap/item-wrap.vue')['default']
+    LoadingContent: typeof import('./src/components/Plugins/LoadingContent/index.vue')['default']
+    MessageContent: typeof import('./src/components/Plugins/MessageContent/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     ScaleScreen: typeof import('./src/components/scale-screen/scale-screen.vue')['default']

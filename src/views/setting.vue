@@ -22,11 +22,6 @@ const radiochange = (blag: boolean, type: string) => {
   console.log(blag, type);
   settingStore.setIsScale(blag);
   // this.$store.commit('setting/updateSwiper', { val, type })
-  // if(type==='isScale'){
-  //     // this.$router.go(0)
-  //     // location.reload()
-  //     // window.location.href=window.location.href+"?t="+Date.now()
-  // }
 };
 </script>
 

@@ -5,22 +5,28 @@ import {
     CanvasRenderer
   } from 'echarts/renderers'
   import {
-    BarChart,PieChart
+    BarChart,PieChart,MapChart,EffectScatterChart
   } from 'echarts/charts'
   import {
     GridComponent,
     TitleComponent,
     TooltipComponent,
     LegendComponent,
+    DatasetComponent,
+    VisualMapComponent,
+    GeoComponent
   } from 'echarts/components'
 
   use([
     CanvasRenderer,
-    BarChart,PieChart,
+    BarChart,PieChart,MapChart,EffectScatterChart,
     GridComponent,
     LegendComponent,
     TooltipComponent,
     TitleComponent,
+    DatasetComponent,
+    VisualMapComponent,
+    GeoComponent
   ])
 
   export const registerEcharts= (app:any)=>{

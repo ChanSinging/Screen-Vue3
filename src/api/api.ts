@@ -1,7 +1,7 @@
 
 /*
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2022-10-11 16:09:59
+ * @LastEditTime: 2022-10-25 11:07:25
  */
 import axios from 'axios';
 
@@ -112,7 +112,7 @@ export const POST = async (url: string, params: Params): Promise<any> => {
  * @param {Params} params
  * @return {*}
  */
-export const GETNOBASE = async (url: string, params: Params): Promise<any> => {
+export const GETNOBASE = async (url: string, params?: Params): Promise<any> => {
     try {
         const data = await axios.get(url, {
             params: params,

@@ -2,10 +2,13 @@
 import ItemWrap from "@/components/item-wrap";
 import LeftTop from "./left-top.vue";
 import LeftCenter from "./left-center.vue";
+import CenterMap from "./center-map.vue";
+
 
 </script>
 
 <template>
+
   <div class="index-box">
     <div class="contetn_left">
       <!-- <div class="pagetab">
@@ -27,10 +30,10 @@ import LeftCenter from "./left-center.vue";
       </ItemWrap>
     </div>
     <div class="contetn_center">
-      <!-- <CenterMap class="contetn_center_top" />
+      <CenterMap class="contetn_center_top" title="设备分布图"/>
       <ItemWrap class="contetn_center-bottom" title="安装计划">
-        <CenterBottom />
-      </ItemWrap> -->
+        <!-- <CenterBottom /> -->
+      </ItemWrap>
     </div>
     <div class="contetn_right">
       <!-- <ItemWrap class="contetn_left-bottom contetn_lr-item" title="报警次数">
@@ -71,6 +74,12 @@ import LeftCenter from "./left-center.vue";
 .contetn_center {
   flex: 1;
   margin: 0 54px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  .contetn_center-bottom {
+    height: 315px;
+  }
 }
 
 .contetn_lr-item {

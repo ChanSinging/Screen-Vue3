@@ -6,6 +6,7 @@ import Headers from "./header.vue";
 import Setting from "./setting.vue"
 import { useSettingStore } from "@/stores/index";
 import { storeToRefs } from 'pinia';
+import  MessageContent  from '@/components/Plugins/MessageContent'
 
 const settingStore = useSettingStore();
 const {isScale} =storeToRefs(settingStore)
@@ -29,6 +30,8 @@ const wrapperStyle = {};
     <div class="content_wrap">
       <Headers />
       <RouterView />
+  <MessageContent/>
+
     </div>
   </scale-screen>
   <Setting/>
