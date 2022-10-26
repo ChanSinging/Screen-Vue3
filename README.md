@@ -1,26 +1,33 @@
 
- ## 开发中...可以提pr完善 ，框架已经搭建好
-## 开发中...可以提pr完善 ，框架已经搭建好
- ##  开发中...可以提pr完善 ，框架已经搭建好
-## 开发中...可以提pr完善 ，框架已经搭建好
-##  开发中...可以提pr完善 ，框架已经搭建好
-## 开发中...可以提pr完善 ，框架已经搭建好
-##  开发中...可以提pr完善 ，框架已经搭建好
-##  开发中...可以提pr完善 ，框架已经搭建好
-##  开发中...可以提pr完善 ，框架已经搭建好
+ ## 开发中...可以提pr完善 ，差无缝轮播
+## 开发中...可以提pr完善 ，差无缝轮播
+ ##  开发中...可以提pr完善 ，差无缝轮播
+##  
 
 
 ## 项目描述
 
+[IofTV-Screen](https://gitee.com/daidaibg/IofTV-Screen/tree/main)  的 Vue3+vite版本，
+
+### 与vue2版本对比
+
+#### 功能
+
+功能采用与vue2版本相同功能
+
+因为要与vue2版本相同功能，有些组件不兼容vue3版本，例如：胶囊柱图，数字滚动皆重新封装为组件，整体来说，功能属实相同。根据自己需求选择[vue2](#vue2版本地址)版本与[vue3](#本项目地址 vue3+vite)版本
+
+#### 样式
+
+进行微调，整体看着更加美观
 
 
-[IofTV-Screen](https://gitee.com/daidaibg/IofTV-Screen/tree/main)Vue3+vite版本，功能样式采用一样
 
 - 项目需要全屏展示（按 F11）。
 
 - 项目部分区域使用了全局注册方式，增加了打包体积，在实际运用中请使用 **按需引入**。
 
-- 项目环境：Vite、Echarts、Npm、Node，axios,mock。
+- 项目环境：Vite、Echarts、Npm、Node，axios,mock,vue3。
 
 - 请拉取 master 分支的代码，其余分支是开发分支。
 
@@ -40,9 +47,11 @@
 
 ### 项目预览地址
 
-[https://www.daidaibg.com/bigscreen](https://www.daidaibg.com/bigscreen)
+[https://www.daidaibg.com/bigscreen-vue3](https://www.daidaibg.com/bigscreen-vue3)
 
 ### 项目仓库地址
+
+#### 本项目地址 vue3+vite
 
 **github地址**
 
@@ -51,6 +60,18 @@
 **Gitee地址**
 
 [https://gitee.com/daidaibg/IofTV-Screen-Vue3](https://gitee.com/daidaibg/IofTV-Screen-Vue3)
+
+#### vue2版本地址
+
+**github地址**
+
+[https://github.com/daidaibg/IofTV-Screen](https://github.com/daidaibg/IofTV-Screen)
+
+**Gitee地址**
+
+[https://gitee.com/daidaibg/IofTV-Screen](https://gitee.com/daidaibg/IofTV-Screen)
+
+
 
 ### 采用自适应组件方式，
 
