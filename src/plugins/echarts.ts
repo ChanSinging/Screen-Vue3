@@ -14,7 +14,8 @@ import {
     LegendComponent,
     DatasetComponent,
     VisualMapComponent,
-    GeoComponent
+    GeoComponent,
+    MarkPointComponent
   } from 'echarts/components'
 
   use([
@@ -26,7 +27,8 @@ import {
     TitleComponent,
     DatasetComponent,
     VisualMapComponent,
-    GeoComponent
+    GeoComponent,
+    MarkPointComponent
   ])
 
   export const registerEcharts= (app:any)=>{

@@ -11,7 +11,7 @@ export function parameteUrl(url: string) {
         for (var i = 0; i < urlArray.length; i++) {
             var urlItem = urlArray[i];
             var item = urlItem.split("=");
-            console.log(item);
+            // console.log(item);
             json[item[0]] = item[1];
         }
         return json;

@@ -17,7 +17,6 @@ const getData = () => {
   });
 };
 const setOption =async (newData: any) => {
-  await nextTick()
   option.value = {
     tooltip: {
       trigger: "axis",
@@ -150,7 +149,10 @@ const setOption =async (newData: any) => {
     ],
   };
 };
+onMounted(()=>{
 getData();
+
+})
 </script>
 
 <template>

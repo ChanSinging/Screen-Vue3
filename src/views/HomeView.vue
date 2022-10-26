@@ -3,15 +3,14 @@ import { ref } from "vue";
 import { RouterView } from "vue-router";
 import ScaleScreen from "@/components/scale-screen";
 import Headers from "./header.vue";
-import Setting from "./setting.vue"
+import Setting from "./setting.vue";
 import { useSettingStore } from "@/stores/index";
-import { storeToRefs } from 'pinia';
-import  MessageContent  from '@/components/Plugins/MessageContent'
+import { storeToRefs } from "pinia";
+import MessageContent from "@/components/Plugins/MessageContent";
 
 const settingStore = useSettingStore();
-const {isScale} =storeToRefs(settingStore)
+const { isScale } = storeToRefs(settingStore);
 const wrapperStyle = {};
-
 </script>
 
 <template>
@@ -30,11 +29,10 @@ const wrapperStyle = {};
     <div class="content_wrap">
       <Headers />
       <RouterView />
-  <MessageContent/>
-
+      <MessageContent />
     </div>
   </scale-screen>
-  <Setting/>
+  <Setting />
 </template>
 <style lang="scss" scoped>
 .content_wrap {

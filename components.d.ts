@@ -7,6 +7,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    CapsuleChart: typeof import('./src/components/datav/capsule-chart/capsule-chart.vue')['default']
     CountUp: typeof import('./src/components/count-up/count-up.vue')['default']
     ElDrawer: typeof import('element-plus/es')['ElDrawer']
     ElRadio: typeof import('element-plus/es')['ElRadio']

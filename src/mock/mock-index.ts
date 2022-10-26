@@ -57,6 +57,50 @@ export default [
             return a
         }
     },
+    //右上
+    {
+        url: "/bigscreen/alarmNum",
+        type: "get",
+        response: () => {
+            const a = Mock.mock({
+                success: true,
+                data: {
+                    dateList: ['2021-11', '2021-12', '2022-01', '2022-02', '2022-03', "2022-04"],
+                    "numList|6": [
+                        '@integer(0, 1000)'
+                    ],
+                    "numList2|6": [
+                        '@integer(0, 1000)'
+                    ]
+                }
+            })
+            return a
+        }
+    },
+    //右中
+    {
+        url: "/bigscreen/ranking",
+        type: "get",
+        response: () => {
+            let num =Mock.mock({"list|80":[{ value:"@integer(50,1000)",name:"@city()"}]}).list
+            //   console.log("ranking",num);
+              let newNum:any =[],numObj:any ={}
+              num.map((item:any )=>{
+                if(!numObj[item.name] && newNum.length<8){
+                    numObj[item.name] =true
+                    newNum.push(item)
+                }
+              })
+              let arr = newNum.sort((a:any ,b:any )=>{
+                return b.value-a.value
+              })
+              let a ={
+                  success:true,
+                  data:arr
+              }
+              return a
+        }
+    },
     //安装计划
     {
         url: "/bigscreen/installationPlan",
