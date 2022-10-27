@@ -1,10 +1,4 @@
 
- ## 开发中...可以提pr完善 ，差无缝轮播
-## 开发中...可以提pr完善 ，差无缝轮播
- ##  开发中...可以提pr完善 ，差无缝轮播
-##  
-
-
 ## 项目描述
 
 [IofTV-Screen](https://gitee.com/daidaibg/IofTV-Screen/tree/main)  的 Vue3+vite版本，
@@ -285,6 +279,12 @@ interface CountUpOptions {
 | :---: | :------: | :------: | :----: | :----: |
 | name  |  柱名称  | `String` |  ---   |  ---   |
 | value | 柱对应值 | `Number` |  ---   |  ---   |
+
+### 无缝轮播组件
+
+看此文档 优化次源码
+
+[https://doc.wssio.com/opensource/vue3-seamless-scroll/](https://doc.wssio.com/opensource/vue3-seamless-scroll/)
 
 ## 中间地图
 
