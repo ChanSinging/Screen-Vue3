@@ -57,6 +57,31 @@ export default [
             return a
         }
     },
+    //左下
+    {
+        url: "/bigscreen/leftBottom",
+        type: "get",
+        response: () => {
+            const a = Mock.mock({
+                success: true,
+                data: {
+                    "list|20": [
+                        {
+                            provinceName: "@province()",
+                            cityName: '@city()',
+                            countyName: "@county()",
+                            createTime: "@datetime('yyyy-MM-dd HH:mm:ss')",
+                            deviceId: "6c512d754bbcd6d7cd86abce0e0cac58",
+                            "gatewayno|+1": 10000,
+                            "onlineState|1": [0, 1],
+
+                        }
+                    ]
+                }
+            })
+            return a
+        }
+    },
     //右上
     {
         url: "/bigscreen/alarmNum",
@@ -82,23 +107,51 @@ export default [
         url: "/bigscreen/ranking",
         type: "get",
         response: () => {
-            let num =Mock.mock({"list|80":[{ value:"@integer(50,1000)",name:"@city()"}]}).list
+            let num = Mock.mock({ "list|80": [{ value: "@integer(50,1000)", name: "@city()" }] }).list
             //   console.log("ranking",num);
-              let newNum:any =[],numObj:any ={}
-              num.map((item:any )=>{
-                if(!numObj[item.name] && newNum.length<8){
-                    numObj[item.name] =true
+            let newNum: any = [], numObj: any = {}
+            num.map((item: any) => {
+                if (!numObj[item.name] && newNum.length < 8) {
+                    numObj[item.name] = true
                     newNum.push(item)
                 }
-              })
-              let arr = newNum.sort((a:any ,b:any )=>{
-                return b.value-a.value
-              })
-              let a ={
-                  success:true,
-                  data:arr
-              }
-              return a
+            })
+            let arr = newNum.sort((a: any, b: any) => {
+                return b.value - a.value
+            })
+            let a = {
+                success: true,
+                data: arr
+            }
+            return a
+        }
+    },
+    //右下
+    {
+        url: "/bigscreen/rightBottom",
+        type: "get",
+        response: () => {
+            const a = Mock.mock({
+                success: true,
+                data: {
+                    "list|40": [{
+                        alertdetail: "@csentence(5,10)",
+                        "alertname|1": ["水浸告警", "各种报警"],
+                        alertvalue: "@float(60, 200)",
+                        createtime: "2022-04-19 08:38:33",
+                        deviceid: null,
+                        "gatewayno|+1": 10000,
+                        phase: "A1",
+                        sbInfo: "@csentence(10,18)",
+                        "terminalno|+1": 100,
+                        provinceName: "@province()",
+                        cityName: '@city()',
+                        countyName: "@county()",
+                    }],
+
+                }
+            })
+            return a
         }
     },
     //安装计划
