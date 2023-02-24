@@ -55,7 +55,7 @@ const getGeojson = (regionCode: string) => {
       mapjson = mapjson.geoJSON;
       resolve(mapjson);
     } else {
-      mapjson = await GETNOBASE(`map-geojson/${regionCode}.json`).then(
+      mapjson = await GETNOBASE(`./map-geojson/${regionCode}.json`).then(
         (data) => data
       );
       code.value=regionCode
