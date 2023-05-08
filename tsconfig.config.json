@@ -1,6 +1,13 @@
 {
-  "include": ["vite.config.*", "vitest.config.*", "cypress.config.*"],
   "compilerOptions": {
     "composite": true,
-  }
+    "module": "esnext",
+    "moduleResolution": "node"
+  },
+  "exclude": ["node_modules","public"],
+  "include": [
+    "vite.config.ts",
+    "config/**/*.ts",
+    "config/**/*.d.ts",
+  ]
 }

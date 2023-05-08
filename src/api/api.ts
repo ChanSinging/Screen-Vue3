@@ -1,7 +1,7 @@
 
 /*
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2023-02-24 15:04:36
+ * @LastEditTime: 2023-05-08 17:44:36
  */
 import axios from 'axios';
 
@@ -16,7 +16,7 @@ const CancelToken = axios.CancelToken;
 export { baseUrl };
 // axios.defaults.withCredentials = true;
 // 添加请求拦截器
-axios.interceptors.request.use(function (config: AxiosRequestConfig) {
+axios.interceptors.request.use(function (config: AxiosRequestConfig):any {
     // 在发送请求之前做些什么 传token
     let token: any = getLocalStorage(StorageEnum.GB_TOKEN_STORE);
     if (token) {
