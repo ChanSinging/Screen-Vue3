@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import BorderBox13 from "@/components/datav/border-box-13";
 const props = withDefaults(
   defineProps<{
     // 标题
@@ -8,29 +9,23 @@ const props = withDefaults(
     title: "",
   }
 );
-
 </script>
 
 <template>
-  <div class="item-wrap">
+  <BorderBox13>
     <div class="item_title" v-if="title !== ''">
       <div class="zuo"></div>
-      <span class="title-inner"> &nbsp;&nbsp;{{title}}&nbsp;&nbsp; </span>
+      <span class="title-inner"> &nbsp;&nbsp;{{ title }}&nbsp;&nbsp; </span>
       <div class="you"></div>
     </div>
     <div
       :class="title !== '' ? 'item_title_content' : 'item_title_content_def'"
     >
-      <slot></slot>
-    </div>
-  </div>
+      <slot></slot></div
+  ></BorderBox13>
 </template>
 
 <style scoped lang="scss">
-.item-wrap {
-  // border: red dashed 1px;
-  box-sizing: border-box;
-}
 $item-title-height: 38px;
 $item_title_content-height: calc(100% - 38px);
 
@@ -69,6 +64,11 @@ $item_title_content-height: calc(100% - 38px);
     -webkit-text-fill-color: transparent;
   }
 }
+
+:deep(.dv-border-box-content)  {
+    box-sizing: border-box;
+    padding: 6px 16px 0px;
+  }
 
 .item_title_content {
   height: $item_title_content-height;

@@ -3,6 +3,7 @@ import { ref, reactive, nextTick } from "vue";
 import { currentGET, GETNOBASE } from "@/api";
 import { registerMap, getMap } from "echarts/core";
 import { optionHandle, regionCodes } from "./center.map";
+import BorderBox13 from "@/components/datav/border-box-13";
 import type { MapdataType } from "./center.map";
 const option = ref({});
 const code = ref("china"); //china 代表中国 其他地市是行政编码
@@ -58,7 +59,7 @@ const getGeojson = (regionCode: string) => {
       mapjson = await GETNOBASE(`./map-geojson/${regionCode}.json`).then(
         (data) => data
       );
-      code.value=regionCode
+      code.value = regionCode;
       registerMap(regionCode, {
         geoJSON: mapjson as any,
         specialAreas: {},
@@ -75,30 +76,31 @@ const mapClick = (params: any) => {
   if (xzqData) {
     getData(xzqData.adcode);
   } else {
-
-    window["$message"].warning("暂无下级地市")
+    window["$message"].warning("暂无下级地市");
   }
 };
 </script>
 
 <template>
   <div class="centermap">
-    <!-- <div class="maptitle">
+    <div class="maptitle">
       <div class="zuo"></div>
       <span class="titletext">{{ title }}</span>
       <div class="you"></div>
-    </div> -->
+    </div>
     <div class="mapwrap">
-      <div class="quanguo" @click="getData('china')" v-if="code !== 'china'">
-        中国
-      </div>
-      <v-chart
-        class="chart"
-        :option="option"
-        ref="centerMapRef"
-        @click="mapClick"
-        v-if="JSON.stringify(option)!='{}'"
-      />
+      <BorderBox13>
+        <div class="quanguo" @click="getData('china')" v-if="code !== 'china'">
+          中国
+        </div>
+        <v-chart
+          class="chart"
+          :option="option"
+          ref="centerMapRef"
+          @click="mapClick"
+          v-if="JSON.stringify(option) != '{}'"
+        />
+      </BorderBox13>
     </div>
   </div>
 </template>
@@ -156,8 +158,7 @@ const mapClick = (params: any) => {
     .quanguo {
       position: absolute;
       right: 20px;
-    //   top: -46px;
-    top: 0;
+        top: -46px;
       width: 80px;
       height: 28px;
       border: 1px solid #00eded;
@@ -169,7 +170,7 @@ const mapClick = (params: any) => {
       cursor: pointer;
       box-shadow: 0 2px 4px rgba(0, 237, 237, 0.5),
         0 0 6px rgba(0, 237, 237, 0.4);
-        z-index: 10;
+      z-index: 10;
     }
   }
 }
