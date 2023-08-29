@@ -226,6 +226,7 @@ onMounted(()=>{
     :option="option"
     v-if="JSON.stringify(option) != '{}'"
   />
+  
 </template>
 
 <style scoped lang="scss"></style>

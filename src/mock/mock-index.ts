@@ -174,6 +174,7 @@ export default [
             }
             a.lineData = lineData
             a.rateData = rateData
+            // barData category lineData rateData
             return {
                 success: true,
                 data: a

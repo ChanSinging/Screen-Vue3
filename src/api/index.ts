@@ -18,7 +18,7 @@ export const urlObj:urlObj = {
 };
 
 type Keys=string | number
-export const currentGET = (key:Keys, param?: any) => {
+export const currentGET = (key:Keys, param?: any) => {  // param?: any：这是一个可选参数 param，它允许你传入一个任意类型的值。它用于在发送 GET 请求时传递额外的参数。
   return GET(urlObj[key], param||{});
 };
 export const currentGETPath = (key:Keys,type:string|string[], param?: any) => {

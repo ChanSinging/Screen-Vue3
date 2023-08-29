@@ -4,7 +4,7 @@ import { currentGET } from "@/api";
 import {graphic} from "echarts/core"
 const option = ref({});
 const getData = () => {
-  currentGET("centerBottom", {}).then((res) => {
+  currentGET("centerBottom", {}).then((res) => {  // centerBottom 是路由/bigscreen/installationPlan
     console.log("安装计划", res);
     if (res.success) {
       setOption(res.data);

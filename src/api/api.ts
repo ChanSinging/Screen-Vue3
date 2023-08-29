@@ -46,7 +46,8 @@ axios.interceptors.response.use((response: AxiosResponse) => {
     /**
      * @code 登录过期 token验证失败 根据后端调 
      */
-    // console.log(response)
+    console.log(response);
+    
     if (response.status !== 200) {
         return Promise.reject(response)
     }
