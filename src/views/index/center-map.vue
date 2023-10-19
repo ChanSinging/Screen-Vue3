@@ -52,11 +52,11 @@ const getData = async (regionCode: string) => {
 const getGeojson = (regionCode: string) => {
   return new Promise<boolean>(async (resolve) => {
     let mapjson = getMap(regionCode);
-    if (mapjson) {
+    if (mapjson) { // 存在缓存
       mapjson = mapjson.geoJSON;
-      resolve(mapjson);
+      resolve(mapjson); // promise的回调函数
     } else {
-      mapjson = await GETNOBASE(`./map-geojson/${regionCode}.json`).then(
+      mapjson = await GETNOBASE(`./map-geojson/${regionCode}.json`).then( // get ops
         (data) => data
       );
       code.value = regionCode;

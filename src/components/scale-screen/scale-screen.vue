@@ -130,7 +130,7 @@ const initSize = () => {
   return new Promise<void>((resolve) => {
     box.value!.scrollLeft = 0;
     box.value!.scrollTop = 0;
-    nextTick(() => {
+    nextTick(() => { 
       // region 获取大屏真实尺寸
       if (props.width && props.height) {
         state.width = props.width;
@@ -210,16 +210,16 @@ const onResize = debounce(async () => {
   updateSize();
   updateScale();
 }, props.delay);
-const initMutationObserver = () => {
-  const observer = (state.observer = new MutationObserver(() => {
-    onResize();
-  }));
-  observer.observe(screenWrapper.value!, {
-    attributes: true,
-    attributeFilter: ["style"],
-    attributeOldValue: true,
-  });
-};
+// const initMutationObserver = () => {
+//   const observer = (state.observer = new MutationObserver(() => {
+//     onResize();
+//   }));
+//   observer.observe(screenWrapper.value!, {
+//     attributes: true,
+//     attributeFilter: ["style"],
+//     attributeOldValue: true,
+//   });
+// };
 
 const clearListener = () => {
   window.removeEventListener("resize", onResize);
